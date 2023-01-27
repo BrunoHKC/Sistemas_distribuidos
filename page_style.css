@@ -1,0 +1,32 @@
+
+*{
+	background-color:rgb(219, 255, 225);
+}
+
+
+article{
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-color: rgb(40,40,40);
+	border-width:5px;
+}
+
+
+
+.nav-item{
+	background-color:rgb(30,30,30);
+}
+
+img{
+	border-radius: 100px;
+}
+
+.active{
+	background-color:rgb(219, 255, 225);
+	color: white;
+}
+
+li a:hover {
+	background-color: rgb(219, 255, 225);;
+	color: white;
+}

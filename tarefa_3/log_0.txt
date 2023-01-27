@@ -1,0 +1,53 @@
+=============================================================================
+Inicio da execucao: programa que implementa simulacao onde cada processo testa o seguinte ate achar um processo correto e mantem o estado dos demais processos.
+Prof. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos
+=============================================================================
+Inicializei os vetores de estadosInicializei 5 processos
+Escalonei os testes iniciais de todos os processos
+Escalonei uma falha do processo 1 no tempo 31.0
+Escalonei uma recuperacao do processo 1 no tempo 91.0
+Inicio dos eventos da simulacao
+o processo 0 testou o processo 1 no tempo  30.0 e ele estava correto
+State[0] : { 0  0  -1  -1  -1 }
+o processo 1 testou o processo 2 no tempo  30.0 e ele estava correto
+State[1] : { -1  0  0  -1  -1 }
+o processo 2 testou o processo 3 no tempo  30.0 e ele estava correto
+State[2] : { -1  -1  0  0  -1 }
+o processo 3 testou o processo 4 no tempo  30.0 e ele estava correto
+State[3] : { -1  -1  -1  0  0 }
+o processo 4 testou o processo 0 no tempo  30.0 e ele estava correto
+State[4] : { 0  -1  -1  -1  0 }
+o processo 1 falhou no tempo  31.0
+o processo 0 testou o processo 1 no tempo  60.0 e ele estava falho
+o processo 0 testou o processo 2 no tempo  60.0 e ele estava correto
+State[0] : { 0  1  0  -1  -1 }
+o processo 2 testou o processo 3 no tempo  60.0 e ele estava correto
+State[2] : { -1  -1  0  0  -1 }
+o processo 3 testou o processo 4 no tempo  60.0 e ele estava correto
+State[3] : { -1  -1  -1  0  0 }
+o processo 4 testou o processo 0 no tempo  60.0 e ele estava correto
+State[4] : { 0  -1  -1  -1  0 }
+o processo 0 testou o processo 1 no tempo  90.0 e ele estava falho
+o processo 0 testou o processo 2 no tempo  90.0 e ele estava correto
+State[0] : { 0  1  0  -1  -1 }
+o processo 2 testou o processo 3 no tempo  90.0 e ele estava correto
+State[2] : { -1  -1  0  0  -1 }
+o processo 3 testou o processo 4 no tempo  90.0 e ele estava correto
+State[3] : { -1  -1  -1  0  0 }
+o processo 4 testou o processo 0 no tempo  90.0 e ele estava correto
+State[4] : { 0  -1  -1  -1  0 }
+o processo 1 recuperou no tempo  91.0
+o processo 1 testou o processo 2 no tempo  92.0 e ele estava correto
+State[1] : { -1  0  0  -1  -1 }
+o processo 0 testou o processo 1 no tempo 120.0 e ele estava correto
+State[0] : { 0  0  0  -1  -1 }
+o processo 2 testou o processo 3 no tempo 120.0 e ele estava correto
+State[2] : { -1  -1  0  0  -1 }
+o processo 3 testou o processo 4 no tempo 120.0 e ele estava correto
+State[3] : { -1  -1  -1  0  0 }
+o processo 4 testou o processo 0 no tempo 120.0 e ele estava correto
+State[4] : { 0  -1  -1  -1  0 }
+o processo 1 testou o processo 2 no tempo 122.0 e ele estava correto
+State[1] : { -1  0  0  -1  -1 }
+o processo 0 testou o processo 1 no tempo 150.0 e ele estava correto
+State[0] : { 0  0  0  -1  -1 }

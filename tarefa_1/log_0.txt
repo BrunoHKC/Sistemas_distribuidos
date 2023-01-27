@@ -1,0 +1,38 @@
+=============================================================================
+Inicio da execucao: programa que implementa simulacao onde cada processo testa o seguinte.
+Prof. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos
+=============================================================================
+Inicializei 5 processos
+Escalonei os testes iniciais de todos os processos
+Escalonei uma falha do processo 1 no tempo 31.0
+Escalonei uma falha do processo 2 no tempo 61.0
+Escalonei uma recuperacao do processo 1 no tempo 91.0
+Escalonei uma falha em todos os processos exceto no processo 3 no tempo 150.0
+Inicio dos eventos da simulacao
+o processo 0 testou o processo 1 no tempo  30.0 e ele estava correto
+o processo 1 testou o processo 2 no tempo  30.0 e ele estava correto
+o processo 2 testou o processo 3 no tempo  30.0 e ele estava correto
+o processo 3 testou o processo 4 no tempo  30.0 e ele estava correto
+o processo 4 testou o processo 0 no tempo  30.0 e ele estava correto
+o processo 1 falhou no tempo  31.0
+o processo 0 testou o processo 1 no tempo  60.0 e ele estava falho
+o processo 2 testou o processo 3 no tempo  60.0 e ele estava correto
+o processo 3 testou o processo 4 no tempo  60.0 e ele estava correto
+o processo 4 testou o processo 0 no tempo  60.0 e ele estava correto
+o processo 2 falhou no tempo  61.0
+o processo 0 testou o processo 1 no tempo  90.0 e ele estava falho
+o processo 3 testou o processo 4 no tempo  90.0 e ele estava correto
+o processo 4 testou o processo 0 no tempo  90.0 e ele estava correto
+o processo 1 recuperou no tempo  91.0
+o processo 1 testou o processo 2 no tempo  92.0 e ele estava falho
+o processo 0 testou o processo 1 no tempo 120.0 e ele estava correto
+o processo 3 testou o processo 4 no tempo 120.0 e ele estava correto
+o processo 4 testou o processo 0 no tempo 120.0 e ele estava correto
+o processo 1 testou o processo 2 no tempo 122.0 e ele estava falho
+o processo 0 falhou no tempo 150.0
+o processo 1 falhou no tempo 150.0
+o processo 2 falhou no tempo 150.0
+o processo 4 falhou no tempo 150.0
+o processo 3 testou o processo 4 no tempo 150.0 e ele estava falho
+o processo 3 testou o processo 4 no tempo 180.0 e ele estava falho
+o processo 3 testou o processo 4 no tempo 210.0 e ele estava falho
