@@ -1,5 +1,6 @@
 =============================================================================
-Inicio da execucao: programa que implementa o detector de falhas vCubeProf. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos
+Inicio da execucao: programa que implementa o detector de falhas vCube
+Prof. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos
 =============================================================================
 Inicializei 8 processos
 Inicializei o vetor State[] de cada processo
