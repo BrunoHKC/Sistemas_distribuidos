@@ -1,3 +1,14 @@
+/* --------------------------------------------------------------------------------------
+   Header file da implementacao da funcao C(i,s) especificada emsala
+   Objetivo: Retornar o cluster a ser testdo pelo processo i na iteracao s
+   Restricoes: -
+
+   Autor: Desconhecido, arquivo editado por Bruno Henrique Kamarowski de Carvalho
+   Disciplina: Sistemas Distribuidos
+   Data da ultima atualizacao: 12/01/2023
+----------------------------------------------------------------------------------------*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
