@@ -1,11 +1,11 @@
 /* --------------------------------------------------------------------------------------
    Implementacao o detector de falhas vCube no ambiente de simulação SMPL
-   Objetivo: Mostrar a execucao do detector de falhas vCube evidenciando a quantidade de testes e latencia
+   Objetivo: Mostrar a execucao do detector de falhas vCube com chance de realizar falsas suspeitas
    Restricoes: -
 
    Autor: Bruno Henrique Kamarowski de Carvalho
    Disciplina: Sistemas Distribuidos
-   Data da ultima atualizacao: 20/01/2023
+   Data da ultima atualizacao: 04/02/2023
 ----------------------------------------------------------------------------------------*/
 
 
@@ -47,10 +47,8 @@ typedef struct{
 
 /*---- declaramos algumas variaveis para gerencia----*/
 
-TipoEvento *vetorEventos;
-int inicioVetor;
-int qtdEventos;
-
+int *vetorFalsoSuspeito;
+int *vetorQtdRodadas;
 TipoProcesso *processo; 
 
 
@@ -100,24 +98,19 @@ void obtemInfo(int** state,int i,int j,int N)
     for(int k = 0; k < N; k++)
     {
         // pega o valor mais atualizado
-        if(k == i) continue;
         state_i[k] = state_i[k] > state_j[k]? state_i[k]:state_j[k];
     }
 }
 
-void incrementaTestes(int N)
-{
-    for(int i = 0;i < qtdEventos;i++)
-    {
-        vetorEventos[(i+inicioVetor)%N].qtdTestes++;
-    }
-}
 
-void incrementaLatencias(int N)
+void incrementaRodadas(int N)
 {
-    for(int i = 0;i < qtdEventos;i++)
+    for(int i = 0;i < N;i++)
     {
-        vetorEventos[(i+inicioVetor)%qtdEventos].latencia++;
+        if(vetorFalsoSuspeito[i])
+        {
+            vetorQtdRodadas[i]++;
+        }
     }
 }
 
@@ -138,48 +131,15 @@ void verificaRodadaTeste(int * vetorTestadores,int N)
         {
             vetorTestadores[i] = FALSE;
         }
-        incrementaLatencias(N);
+        incrementaRodadas(N);
     }
 }
 
-void verificaEventosResolvidos(int **state, int N)
-{
-    for(int j = 0; j < qtdEventos;j++)
-    {
-        TipoEvento evento = vetorEventos[(j + inicioVetor)%N];
 
-        int processoEvento = evento.processoEvento;
-        int estadoEsperado = evento.tipoEvento==fault?FALHO:CORRETO;
-        int todosProcessosAtualizados = TRUE;
-
-        //Verifica se todos os vetores state de processos corretos possuem o estado correto
-        for(int i = 0;i < N;i++)
-        {
-            if(status(processo[i].id) != 0) continue;   //Se processo falho, nao verifica vetor state
-            todosProcessosAtualizados &= ((state[i][evento.processoEvento]%2) == estadoEsperado || i == evento.processoEvento);
-            if(!todosProcessosAtualizados){break;}
-        }
-
-        //Se o estado estava correto em todos os vetores state
-        if(todosProcessosAtualizados)
-        {
-            //remove evento do vetor
-            for(int k = j;k >= 0;k--)
-            {
-                vetorEventos[k+inicioVetor] = vetorEventos[(k-1+inicioVetor)%N];
-            }
-            inicioVetor = (inicioVetor+1)%N;
-            j--;
-            qtdEventos--;
-
-            //adiciona a resolucao do evento ao log
-            printf("A latencia do evento de %s do processo %d foi de %d rodadas e contou com %d testes\n",evento.tipoEvento==fault?"falha":"recovery",evento.processoEvento,evento.latencia,evento.qtdTestes);
-        }
-    }
-}
 
 int main (int argc, char *argv[]) {
     static int N,      /* number of nodes is parameter */
+               probFalha, /* probabilidade de realizar uma falsa suspeita*/
                logN,   /* Numero de clusters */
                token,  /* node identifier, natural number */ 
                event,
@@ -192,8 +152,8 @@ int main (int argc, char *argv[]) {
     int *vetorTestadores;  //True se o processo testou ao menos um processo
     int **state;
 
-    if (argc != 2) {
-      puts("Uso correto: vcube <num-processos>");
+    if (argc != 3) {
+      puts("Uso correto: vcube <num-processos> <percentual-falsa-suspeita>");
       exit(1);
     }
 
@@ -206,14 +166,23 @@ int main (int argc, char *argv[]) {
         logN++;
         aux = aux/2;
     }
-    smpl(0, "Simulacao do vCube");
+
+    probFalha = atoi(argv[2]);
+
+    if(probFalha < 0 || probFalha > 100)
+    {
+        puts("A probabilidade de falha deve ser um valor entre 0 e 100");
+        exit(1);
+    }
+    
+    smpl(0, "Simulacao do vCube assincrono");
     reset();
     stream(1);
 
-    printf("=============================================================================\n");
-    printf("Inicio da execucao: programa que implementa o detector de falhas vCube\n");
+    printf("================================================================================================\n");
+    printf("Inicio da execucao: programa que implementa o detector de falhas vCube em um sistema assincrono\n");
     printf("Prof. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos\n");
-    printf("=============================================================================\n");
+    printf("===============================================================================================\n");
  
 /*----- inicializacao -----*/
 
@@ -224,20 +193,26 @@ int main (int argc, char *argv[]) {
        memset (fa_name, '\0', 5);
        sprintf(fa_name, "%d", i);
        processo[i].id = facility(fa_name,1);
-       // printf("fa_name = %s, processo[%d].id = %d\n", fa_name, i, processo[i].id);
     } /* end for */
 
     printf("Inicializei %d processos\n",N);
+    printf("A probabilidade de cometer uma falsa suspeita eh de %d%% \n",probFalha);
 
-    //Inicializa vetor de eventos
-    vetorEventos = (TipoEvento*)malloc(N *sizeof(TipoEvento));
+    //Inicializa vetor dos falsos suspeitos e de qtd de rodadas que esta falso suspeito
+    vetorFalsoSuspeito = (int*)malloc(N*sizeof(int));
+    vetorQtdRodadas = (int*)malloc(N*sizeof(int));
+    for(int i = 0; i < N;i++)
+    {
+        vetorFalsoSuspeito[i] = FALSE;
+        vetorQtdRodadas[i] = 0;
+    }
+
+    //Inicializa vetor dos processos testados
     vetorTestadores = (int*)malloc(N*sizeof(int));
     for(int i = 0; i < N;i++)
     {
         vetorTestadores[i] = FALSE;
     }
-    qtdEventos = 0;
-    inicioVetor = 0;
 
     //Aloca vetores State[]
     state = (int **)malloc(N*sizeof(int*));
@@ -261,29 +236,8 @@ int main (int argc, char *argv[]) {
 
     for (i=0; i<N; i++) {
        schedule(test, INTERVALO_TESTE, i);
-     }
-    for(i = 0; 2*i < N;i++)
-    {
-        schedule(fault, 31.0, 2*i);
-    }
-    for(i = 0; 2*i < N;i++)
-    {
-        schedule(recovery, 91.0, 2*i);
-    }
-    for(i = N/2; i < N;i++)
-    {
-        schedule(fault, 121.0, i);
-    }
-    for(i = N/2; i < N;i++)
-    {
-        schedule(recovery, 181.0, i);
     }
     printf("Escalonei os testes iniciais de todos os processos\n");
-    printf("Escalonei uma falha de todos os processo pares no tempo 31.0\n");
-    printf("Escalonei um recovery de todos os processo pares no tempo 91.0\n");
-    printf("Escalonei uma falha do processo %d ao %d no tempo 121.0\n",N/2,N-1);
-    printf("Escalonei uma falha do recovery %d ao %d no tempo 181.0\n",N/2,N-1);
-
     
 /*----- agora vem o loop principal do simulador -----*/
 
@@ -310,38 +264,62 @@ int main (int argc, char *argv[]) {
                         if(primeiroCorreto(testadores,token,state[token],N))
                         {
                             //testa processo j
-                            incrementaTestes(N);               // contabiliza teste na contagem
                             vetorTestadores[token] = TRUE;     // registra que o processo testou alguem
-                            switch(status(processo[j].id))     // testa o proximo processo
+
+                            //processo i testa processo j
+                            int estadoProcessoJ = (status(processo[j].id) == 0) && (probFalha < rand()%100)? CORRETO: FALHO;
+                            int falsaSuspeita = (status(processo[j].id) == 0 && (estadoProcessoJ != CORRETO));
+
+                            if(falsaSuspeita)
                             {
-                                case 0:
-                                    //Processo testado esta correto
-                                    if(state[token][j] == UNKNOWN)
-                                    {
-                                        state[token][j] = CORRETO;
-                                    }
-                                    else if(state[token][j]%2 == 1)
-                                    {
-                                        state[token][j]++;
-                                    }
-                                    obtemInfo(state, token, j, N);
-                                    printf("o processo %d eh o primeiro correto em C(%d,%d) e testou o processo %d no tempo %5.1f e ele estava correto\n",token,j, s , j,time());
-                                    break;
-                                default:
-                                    //Processo testado esta falho
-                                    if(state[token][j] == UNKNOWN)
-                                    {
-                                        state[token][j] = FALHO;
-                                    }
-                                    else if(state[token][j]%2 == 0)
-                                    {
-                                        state[token][j]++;
-                                    }
-                                    printf("o processo %d eh o primeiro correto em C(%d,%d) e testou o processo %d no tempo %5.1f e ele estava falho\n",token,j, s , j,time());
-                                    break;
+                                vetorFalsoSuspeito[token] = TRUE;
                             }
-                            //Apos um teste,verifica se resolveu o evento
-                            verificaEventosResolvidos(state,N);   
+
+                            //computabiliza resultado do teste
+                            if(estadoProcessoJ == CORRETO)
+                            {
+                                //Processo testado esta correto
+                                if(state[token][j] == UNKNOWN)
+                                {
+                                    state[token][j] = CORRETO;
+                                }
+                                else if(state[token][j]%2 == 1)
+                                {
+                                    state[token][j]++;
+                                }
+                                obtemInfo(state, token, j, N);
+
+                                //Se foi vitma de falsa suspeita
+                                if(state[token][token] > 0)
+                                {
+                                    printf("O processo %d descobriu no tempo %5.1f que foi vitima de falsa suspeita durante %d rodadas\n",token,time(),vetorQtdRodadas[token]);
+                                    printf("O processo %d encerrou sua execucao no tempo %5.1f\n",token,time());
+                                    int event = fault;
+                                    cause(&event,&token);
+                                }
+                                printf("o processo %d testou o processo %d no tempo %5.1f e ele estava correto\n",token,j,time());
+                            }
+                            else
+                            {
+                                //Processo testado esta falho
+                                if(state[token][j] == UNKNOWN)
+                                {
+                                    state[token][j] = FALHO;
+                                }
+                                else if(state[token][j]%2 == 0)
+                                {
+                                    state[token][j]++;
+                                }
+                                if(falsaSuspeita)
+                                {
+                                    printf("o processo %d testou o processo %d no tempo %5.1f e possui uma falsa suspeita dele\n",token,j, time());
+                                }
+                                else
+                                {
+                                    printf("o processo %d testou o processo %d no tempo %5.1f e possui uma suspeita legitima dele\n",token,j, time());
+                                }
+                                break;
+                            }
                         }
                     }
                 }
@@ -355,25 +333,11 @@ int main (int argc, char *argv[]) {
        case fault:
             r = request(processo[token].id, token, 0);
             printf("o processo %d falhou no tempo %5.1f\n", token, time());
-            //registra dados do evento
-            vetorEventos[(inicioVetor+qtdEventos)%N].processoEvento = token;
-            vetorEventos[(inicioVetor+qtdEventos)%N].tempoEvento = time();
-            vetorEventos[(inicioVetor+qtdEventos)%N].tipoEvento = fault;
-            vetorEventos[(inicioVetor+qtdEventos)%N].latencia = 1;
-            vetorEventos[(inicioVetor+qtdEventos)%N].qtdTestes = 0;
-            qtdEventos++;
             break;
        case recovery:
             release(processo[token].id, token);
             schedule(test, 1.0, token);
             printf("o processo %d recuperou no tempo %5.1f\n", token, time());
-            //registra dados do evento
-            vetorEventos[(inicioVetor+qtdEventos)%N].processoEvento = token;
-            vetorEventos[(inicioVetor+qtdEventos)%N].tempoEvento = time();
-            vetorEventos[(inicioVetor+qtdEventos)%N].tipoEvento = recovery;
-            vetorEventos[(inicioVetor+qtdEventos)%N].latencia = 1;
-            vetorEventos[(inicioVetor+qtdEventos)%N].qtdTestes = 0;
-            qtdEventos++;
             break;
       } /* end switch */
     } /* end while */

@@ -47,7 +47,7 @@ real ranf()
   }
 
 /*--------------------  SELECT GENERATOR STREAM  ---------------------*/
-stream(n)
+int stream(n)
   int n;
     { /* set stream for 1<=n<=15, return stream for n=0 */
       if ((n<0)||(n>15)) then error(0,"stream Argument Error");
@@ -95,7 +95,7 @@ real uniform(a,b)
     }
 
 /*--------------------  RANDOM INTEGER GENERATOR  --------------------*/
-random(i,n)
+int random(i,n)
   int i,n;
     { /* 'random' returns an integer equiprobably selected from the   */
       /* set of integers i, i+1, i+2, . . , n.                        */
