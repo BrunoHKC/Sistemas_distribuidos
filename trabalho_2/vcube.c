@@ -136,7 +136,6 @@ void verificaRodadaTeste(int * vetorTestadores,int N)
 }
 
 
-
 int main (int argc, char *argv[]) {
     static int N,      /* number of nodes is parameter */
                probFalha, /* probabilidade de realizar uma falsa suspeita*/
@@ -152,8 +151,8 @@ int main (int argc, char *argv[]) {
     int *vetorTestadores;  //True se o processo testou ao menos um processo
     int **state;
 
-    if (argc != 3) {
-      puts("Uso correto: vcube <num-processos> <percentual-falsa-suspeita>");
+    if (argc != 4) {
+      puts("Uso correto: vcube <num-processos> <percentual-falsa-suspeita> <semente-aleatoria>");
       exit(1);
     }
 
@@ -185,6 +184,9 @@ int main (int argc, char *argv[]) {
     printf("===============================================================================================\n");
  
 /*----- inicializacao -----*/
+
+
+    srand(atoi(argv[3]));   // Initialization, should only be called once.
 
     //Inicializa processos
     processo = (TipoProcesso *) malloc(sizeof(TipoProcesso)*N);
@@ -245,14 +247,15 @@ int main (int argc, char *argv[]) {
 
     while (time() < TEMPO_DE_SIMULACAO) {
       cause(&event, &token);
+      int encerrouExecucao = FALSE;
       switch(event) {
        case test: 
             if (status(processo[token].id) != 0) break;  // processo falho não testa!
-            for(int s = 1; s <= logN;s++)
+            for(int s = 1; s <= logN && !encerrouExecucao;s++)
             {
                 // cria o conjunto dos nodos a serem testados
                 node_set* testados = cis(token,s);
-                for(int k = 0;k < testados->size;k++)
+                for(int k = 0;k < testados->size && !encerrouExecucao;k++)
                 {
                     // se eh um nodo que existe
                     int j = testados->nodes[k];
@@ -267,7 +270,7 @@ int main (int argc, char *argv[]) {
                             vetorTestadores[token] = TRUE;     // registra que o processo testou alguem
 
                             //processo i testa processo j
-                            int estadoProcessoJ = (status(processo[j].id) == 0) && (probFalha < rand()%100)? CORRETO: FALHO;
+                            int estadoProcessoJ = (status(processo[j].id) == 0) && (probFalha > (rand()%100))? CORRETO: FALHO;
                             int falsaSuspeita = (status(processo[j].id) == 0 && (estadoProcessoJ != CORRETO));
 
                             if(falsaSuspeita)
@@ -287,17 +290,18 @@ int main (int argc, char *argv[]) {
                                 {
                                     state[token][j]++;
                                 }
+                                printf("o processo %d testou o processo %d no tempo %5.1f e ele estava correto\n",token,j,time());
                                 obtemInfo(state, token, j, N);
 
                                 //Se foi vitma de falsa suspeita
-                                if(state[token][token] > 0)
+                                if(state[token][token]%2 == 1)
                                 {
                                     printf("O processo %d descobriu no tempo %5.1f que foi vitima de falsa suspeita durante %d rodadas\n",token,time(),vetorQtdRodadas[token]);
                                     printf("O processo %d encerrou sua execucao no tempo %5.1f\n",token,time());
-                                    int event = fault;
-                                    cause(&event,&token);
+                                    int evento = fault;
+                                    encerrouExecucao = TRUE;
+                                    schedule(fault,time(),token);
                                 }
-                                printf("o processo %d testou o processo %d no tempo %5.1f e ele estava correto\n",token,j,time());
                             }
                             else
                             {
@@ -328,7 +332,10 @@ int main (int argc, char *argv[]) {
             imprimeState(state,token,N);
             verificaRodadaTeste(vetorTestadores,N);
             
-            schedule(test, INTERVALO_TESTE, token);
+            if(!encerrouExecucao)
+            {
+                schedule(test, INTERVALO_TESTE, token);
+            }
             break;
        case fault:
             r = request(processo[token].id, token, 0);
