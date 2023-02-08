@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)https://www.inf.ufpr.br/bhkc18/about.html -->
+<html lang="pt-br"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Trabalho Sistemas Distribuídos</title>
+		
+		<meta name="author" content="Bruno H. Kamarowski de Carvalho">
+		<meta name="keywords" content="Aluno, BCC, Computação, UFPR">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./page_style.css">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="./bootstrap.min.css">
+		
+		<!--<base target="my_page">--><base href="." target="my_page">
+		
+	</head>
+	
+	<body>
+		<header>
+			<section class="container-fluid text-center"> 
+				<h2 class="d-flex justify-content-center">Bruno H. Kamarowski de Carvalho</h2>
+				<h3 class="d-flex justify-content-center">UFPR - BCC - CI721</h3><br>
+			</section>
+		</header>
+
+		
+		<main class="container-fluid">
+			
+			<article class="row">
+				<section class="container-fluid col-sm-2"></section>
+
+				<section class="container-fluid col-sm-8">
+					
+					<h2>Trabalho 2 - Relatório</h2>
+
+					<p>O trabalho foi implementado utilizando o arquivo cisj.c disponibilizado na página do professor. Este arquivo possui a implementacao da função C(i,s) estudada em sala.</p>
+					<p>Foi utilizado uma matriz NxN onde a i-ésima linha corresponde ao vetor State[] do processo i.
+					Para cada vetor State[], foi inicializado todos os processos no estado correto pois , como indicado pelo professor, assume-se que todos os processos iniciam no estado correto.</p>
+					<p>Em cada intervalo de teste, o testador(processo i) obtém os processos a serem testados utilizando a função C(i,s), com s variando de 1 a log N, então para cada processo j a ser testado, utilizando o vetor State[] do processo i é verificado se o processo i é o primeiro processo não falho em C(j,s), para o mesmo s anterior.
+					Caso seja o primeiro processo correto, é atualizado o vetor State[] do processo i com as novidades do vetor State[] do processo j comparando elemento a elemento, caso State_j[x] > State_i[x] para algum x, então State_j[x] possui uma novidade.</p>
+					<p>Diferente do trabalho anterior, dessa vez o processo i também obtem novidades sobre seu próprio estado. Caso descubra que foi vítma de uma falsa suspeita, isto é, caso possua um valor ímpar em algum vetor State, então o processo i termina sua execução.</p>
+					<p>Ao final do teste escalonado para o processo i, é feito vetorTestadores[i] = TRUE, sinalizando que o processo i testou algum processo correto ou todos falhos, esse vetor é usado para contabilizar as rodadas de teste. Ao final de uma rodada de teste, é feito vetorTestadores[k]=FALSE para todo k entre 0 e N.</p>
+					<p>Caso o processo i sofra uma falsa suspeita, é feito vetorFalsoSuspeito[i] = TRUE, sinalizando que o processo i sofreu uma falsa suspeita. O vetor vetorFalsoSuspeito junto do vetor vetorQtdRodadas contabilizam a quantidade de rodadas que o processo i esteve falso suspeito por algum processo até descobrir.</p>
+					<br>
+					<p>O programa disponibilizado recebe três argumentos:</p>
+					<p><b>num-processos:</b> Quantidade de processos na simulação<br>
+					<b>percentual-falsa-suspeita:</b> Probabilidade de um processo correto considerado suspeito ao ser testado<br>
+					<b>semente-aleatoria:</b> Semente para o gerador de numeros aleatórios, usado para ser possível reproduzir testes</p>
+					<br>
+
+
+
+					<a class="text-center" href="./trabalho_2/vcube.c.txt" target="_self">vcube.c</a> <br>
+					<a class="text-center" href="./trabalho_2/cis.c.txt" target="_self">cis.c</a> <br>
+					<a class="text-center" href="./trabalho_2/cis.h.txt" target="_self">cis.h</a> <br>
+					<a class="text-center" href="./trabalho_2/rand.c.txt" target="_self">rand.c</a> <br>
+					<a class="text-center" href="./trabalho_2/smpl.c.txt" target="_self">smpl.c</a> <br>
+					<a class="text-center" href="./trabalho_2/smpl.h.txt" target="_self">smpl.h</a> <br>
+					<a class="text-center" href="./trabalho_2/makefile.txt" target="_self">makefile</a> <br>
+
+					<hr>
+
+					<p>Os logs disponibilizados a seguir reportam as seguintes situações:</p>
+
+					<ul>
+						<li>Quando um processo testa outro processo como correto</li>
+						<li>Quando um processo testa outro processo correto e erroneamente suspeita dele</li>
+						<li>Quando um processo testa outro processo falho e legitimamente suspeita dele</li>
+						<li>Quando um processo termina sua execução</li>
+						<li>Quando termina uma rodada de testes</li>
+					</ul>
+					
+					<p>Além disso depois de cada intervalo de testes é mostrado o vetor State de cada processo correto.</p>
+
+					<h4>Log 0</h4>
+					<p>Nesse log é possível verificar a situação de que pouco a pouco os processos vão descobrindo falsas suspeitas e eventualmente todos menos um encerram sua execução<br></p>
+					<p>Executar com: ./vcube 8 30 8</p>
+					<a class="text-center" href="./trabalho_2/log_0.txt" target="_self">log 0</a>
+					<br><br>
+
+					<h4>Log 1</h4>
+					<p>Nesse log é possível verificar que quando todo teste é uma falsa suspeita, nenhum processo termina sua própria execução, afinal não obtém informações de ninguém e portânto não descobre que falsas suspeitas aconteceram.<br></p>
+					<p>Executar com: ./vcube 8 100 0</p>
+					<a class="text-center" href="./trabalho_2/log_1.txt" target="_self">log 1</a>
+					<br><br>
+
+					<h4>Log 2</h4>
+					<p>Nesse log é possível verificar que o processo 4 cometeu uma falsa suspeita contra os processos 5 e 7 no tempo 30.0, quando o processo 6 testa o processo 4, obtém informações erradas sobre os processos 5 e 7. Quando o processo 6 testa o processo 5(pois como suspeita do processo 7 é o primeiro processo correto em C(5,2)) e verifica que o processo 5 está correto, nesse ponto temos que State_6[5] é um numero par diferente de 0(indicando que o processo foi suspeito e agora já não é mais).<br></p>
+					<p>Na rodada seguinte, o processo 5 testa o processo 6 e descobre que em algum momento foi vítma de uma falsa suspeita e encerra sua execução.</p>
+					<p>Executar com: ./vcube 8 10 7</p>
+					<a class="text-center" href="./trabalho_2/log_2.txt" target="_self">log 2</a>
+					<br><br>
+
+					<h4>Log 3</h4>
+					<p>Nesse log é possível verificar que no tempo 60 apenas os processos 3,4 e 7 não estão falhos e suspeitam entre si, formando portanto três componentes</p>
+					<p>Nas rodadas seguintes os processos vão encerrando suas execução na medida que vão parando de suspeitar dos demais processos e obterem a informação que são suspeitos para outros processos.</p>
+					<p>Executar com: ./vcube 8 50 8</p>
+					<a class="text-center" href="./trabalho_2/log_3.txt" target="_self">log 3</a>
+					<br><br>
+
+				</section>
+
+				<section class="container-fluid col-sm-2">
+				</section>
+
+			</article>
+			
+		</main>
+		
+
+		
+		
+		<footer>
+			<section class="container-fluid"> 
+				<p>© 2023 Bruno H. Kamarowski de Carvalho</p>
+			</section>
+		</footer>
+		
+</body></html>
