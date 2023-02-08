@@ -5,7 +5,7 @@
 
    Autor: Bruno Henrique Kamarowski de Carvalho
    Disciplina: Sistemas Distribuidos
-   Data da ultima atualizacao: 04/02/2023
+   Data da ultima atualizacao: 08/02/2023
 ----------------------------------------------------------------------------------------*/
 
 
@@ -64,6 +64,7 @@ void imprimeState(int** state,int i,int N)
 
 int primeiroCorreto(node_set* testadores,int i,int* state,int N)
 {
+   
     int primeiro = TRUE;
     for(int k = 0;k < testadores->size;k++)
     {
@@ -114,7 +115,112 @@ void incrementaRodadas(int N)
     }
 }
 
-void verificaRodadaTeste(int * vetorTestadores,int N)
+
+int pertence(int* pilha,int topo,int x)
+{
+
+    for(int i = 0; i < topo; i++)
+    {
+        if(pilha[i] == x)
+            return TRUE;
+    }
+    return FALSE;
+}
+
+
+int configuacaoInteressante(int** state,int N)
+{
+    int* componente = malloc(N*sizeof(int));
+    for(int i = 0; i < N; i++)
+    {
+        if(status(processo[i].id) == 0)
+            componente[i] = -1;
+        else
+            componente[i] = -2;
+    }
+    int* pilha = malloc(N*sizeof(int));
+    int topo = -1;
+    int root = -1;
+
+    for(int i = 0; i < N;i++)
+    {
+        if(componente[i] == -1)
+        {
+            root = i;
+            topo++;
+            pilha[topo] = root;
+        }
+
+        while(topo >= 0)
+        {
+            int current = pilha[topo];
+            topo--;
+            componente[current] = root;
+
+            for(int j = 0; j < N;j++)
+            {
+                if(j == current) continue;
+
+                if(state[current][j]%2 == 0)
+                {
+                    if(!pertence(pilha,topo,j) && componente[i] == -1)
+                    {
+                        topo++;
+                        pilha[topo] = j;
+                        componente[j] = root;
+                    }
+                }
+            }
+
+        }        
+    }
+
+    int first = -1;
+    int recorrentFirst = 0;
+    int recorrentSecond = 0;
+    int second = -1;
+    int three = FALSE;
+    for(int i = 0; i < N;i++)
+    {
+        if(componente[i] != -1 && componente[i] !=-2 && first == -1)
+        {
+            first = componente[i];
+        }
+        else
+        {
+            if(componente[i] == first)
+                recorrentFirst = TRUE;
+            if(second != -1 && componente[i] == second)
+                recorrentSecond = TRUE;
+            
+            if(first != -1 && second != -1 && componente[i] != -1 && componente[i] !=-2)
+                three = TRUE;
+
+            if(componente[i] != -1 && componente[i] !=-2 && componente[i] != first && second == -1)
+            {
+                second = componente[i];
+            }
+
+
+            if((recorrentFirst && recorrentSecond) || three)
+            {
+                printf("componentes: {");
+                for(int l = 0; l < N;l++)
+                {
+                    printf(" %d ",componente[l]);
+                }
+                printf("}\n");
+                return TRUE;
+            }   
+        }
+    }
+    
+    return FALSE;
+}
+
+
+int configInteressante = FALSE;
+void verificaRodadaTeste(int * vetorTestadores,int N,int** state)
 {
     int todosTestaram = TRUE;
     for(int i = 0; (i < N) && todosTestaram; i++)
@@ -132,8 +238,19 @@ void verificaRodadaTeste(int * vetorTestadores,int N)
             vetorTestadores[i] = FALSE;
         }
         incrementaRodadas(N);
+
+        /*
+        if(configuacaoInteressante(state,N))
+        {
+            if(!configInteressante)
+                configInteressante = TRUE;
+            else
+                printf("ACONTECEU UM EVENTO INTERESSANTE NO TEMPO %5.1f!!\n",time());
+        }
+        */
     }
 }
+
 
 
 int main (int argc, char *argv[]) {
@@ -255,6 +372,7 @@ int main (int argc, char *argv[]) {
             {
                 // cria o conjunto dos nodos a serem testados
                 node_set* testados = cis(token,s);
+
                 for(int k = 0;k < testados->size && !encerrouExecucao;k++)
                 {
                     // se eh um nodo que existe
@@ -270,7 +388,7 @@ int main (int argc, char *argv[]) {
                             vetorTestadores[token] = TRUE;     // registra que o processo testou alguem
 
                             //processo i testa processo j
-                            int estadoProcessoJ = (status(processo[j].id) == 0) && (probFalha > (rand()%100))? CORRETO: FALHO;
+                            int estadoProcessoJ = (status(processo[j].id) == 0) && (probFalha <= (rand()%100))? CORRETO: FALHO;
                             int falsaSuspeita = (status(processo[j].id) == 0 && (estadoProcessoJ != CORRETO));
 
                             if(falsaSuspeita)
@@ -290,17 +408,16 @@ int main (int argc, char *argv[]) {
                                 {
                                     state[token][j]++;
                                 }
-                                printf("o processo %d testou o processo %d no tempo %5.1f e ele estava correto\n",token,j,time());
+                                printf("O processo %d testou o processo %d no tempo %5.1f e ele estava correto\n",token,j,time());
                                 obtemInfo(state, token, j, N);
 
                                 //Se foi vitma de falsa suspeita
-                                if(state[token][token]%2 == 1)
+                                if(state[token][token] > 0)
                                 {
                                     printf("O processo %d descobriu no tempo %5.1f que foi vitima de falsa suspeita durante %d rodadas\n",token,time(),vetorQtdRodadas[token]);
-                                    printf("O processo %d encerrou sua execucao no tempo %5.1f\n",token,time());
-                                    int evento = fault;
                                     encerrouExecucao = TRUE;
-                                    schedule(fault,time(),token);
+                                    r = request(processo[token].id, token, 0);
+                                    printf("O processo %d encerrou sua execucao no tempo %5.1f\n",token,time());
                                 }
                             }
                             else
@@ -316,35 +433,34 @@ int main (int argc, char *argv[]) {
                                 }
                                 if(falsaSuspeita)
                                 {
-                                    printf("o processo %d testou o processo %d no tempo %5.1f e possui uma falsa suspeita dele\n",token,j, time());
+                                    printf("O processo %d testou o processo %d no tempo %5.1f e possui uma falsa suspeita dele\n",token,j, time());
                                 }
                                 else
                                 {
-                                    printf("o processo %d testou o processo %d no tempo %5.1f e possui uma suspeita legitima dele\n",token,j, time());
+                                    printf("O processo %d testou o processo %d no tempo %5.1f e possui uma suspeita legitima dele\n",token,j, time());
                                 }
-                                break;
                             }
                         }
                     }
                 }
             }
 
-            imprimeState(state,token,N);
-            verificaRodadaTeste(vetorTestadores,N);
-            
             if(!encerrouExecucao)
             {
                 schedule(test, INTERVALO_TESTE, token);
+                imprimeState(state,token,N);
             }
+            verificaRodadaTeste(vetorTestadores,N,state);
             break;
        case fault:
             r = request(processo[token].id, token, 0);
-            printf("o processo %d falhou no tempo %5.1f\n", token, time());
+            printf("O processo %d falhou no tempo %5.1f\n", token, time());
+
             break;
        case recovery:
             release(processo[token].id, token);
             schedule(test, 1.0, token);
-            printf("o processo %d recuperou no tempo %5.1f\n", token, time());
+            printf("O processo %d recuperou no tempo %5.1f\n", token, time());
             break;
       } /* end switch */
     } /* end while */
