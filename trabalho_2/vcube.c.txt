@@ -1,5 +1,5 @@
 /* --------------------------------------------------------------------------------------
-   Implementacao o detector de falhas vCube no ambiente de simulação SMPL
+   Implementacao o detector de falhas vCube assincrono no ambiente de simulação SMPL
    Objetivo: Mostrar a execucao do detector de falhas vCube com chance de realizar falsas suspeitas
    Restricoes: -
 
@@ -116,110 +116,8 @@ void incrementaRodadas(int N)
 }
 
 
-int pertence(int* pilha,int topo,int x)
-{
-
-    for(int i = 0; i < topo; i++)
-    {
-        if(pilha[i] == x)
-            return TRUE;
-    }
-    return FALSE;
-}
 
 
-int configuacaoInteressante(int** state,int N)
-{
-    int* componente = malloc(N*sizeof(int));
-    for(int i = 0; i < N; i++)
-    {
-        if(status(processo[i].id) == 0)
-            componente[i] = -1;
-        else
-            componente[i] = -2;
-    }
-    int* pilha = malloc(N*sizeof(int));
-    int topo = -1;
-    int root = -1;
-
-    for(int i = 0; i < N;i++)
-    {
-        if(componente[i] == -1)
-        {
-            root = i;
-            topo++;
-            pilha[topo] = root;
-        }
-
-        while(topo >= 0)
-        {
-            int current = pilha[topo];
-            topo--;
-            componente[current] = root;
-
-            for(int j = 0; j < N;j++)
-            {
-                if(j == current) continue;
-
-                if(state[current][j]%2 == 0)
-                {
-                    if(!pertence(pilha,topo,j) && componente[i] == -1)
-                    {
-                        topo++;
-                        pilha[topo] = j;
-                        componente[j] = root;
-                    }
-                }
-            }
-
-        }        
-    }
-
-    int first = -1;
-    int recorrentFirst = 0;
-    int recorrentSecond = 0;
-    int second = -1;
-    int three = FALSE;
-    for(int i = 0; i < N;i++)
-    {
-        if(componente[i] != -1 && componente[i] !=-2 && first == -1)
-        {
-            first = componente[i];
-        }
-        else
-        {
-            if(componente[i] == first)
-                recorrentFirst = TRUE;
-            if(second != -1 && componente[i] == second)
-                recorrentSecond = TRUE;
-            
-            if(first != -1 && second != -1 && componente[i] != -1 && componente[i] !=-2)
-                three = TRUE;
-
-            if(componente[i] != -1 && componente[i] !=-2 && componente[i] != first && second == -1)
-            {
-                second = componente[i];
-            }
-
-
-            if((recorrentFirst && recorrentSecond) || three)
-            {
-                printf("componentes: {");
-                for(int l = 0; l < N;l++)
-                {
-                    printf(" %d ",componente[l]);
-                }
-                printf("}\n");
-                return TRUE;
-            }   
-        }
-    }
-    
-    return FALSE;
-}
-
-
-int configInteressante = FALSE;
 void verificaRodadaTeste(int * vetorTestadores,int N,int** state)
 {
     int todosTestaram = TRUE;
@@ -238,16 +136,6 @@ void verificaRodadaTeste(int * vetorTestadores,int N,int** state)
             vetorTestadores[i] = FALSE;
         }
         incrementaRodadas(N);
-
-        /*
-        if(configuacaoInteressante(state,N))
-        {
-            if(!configInteressante)
-                configInteressante = TRUE;
-            else
-                printf("ACONTECEU UM EVENTO INTERESSANTE NO TEMPO %5.1f!!\n",time());
-        }
-        */
     }
 }
 

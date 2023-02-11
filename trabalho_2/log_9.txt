@@ -1,0 +1,685 @@
+================================================================================================
+Inicio da execucao: programa que implementa o detector de falhas vCube em um sistema assincrono
+Prof. Elias P. Duarte Jr.  -  Disciplina Sistemas Distribuidos
+===============================================================================================
+Inicializei 20 processos
+A probabilidade de cometer uma falsa suspeita eh de 1% 
+Inicializei o vetor State[] de cada processo
+Escalonei os testes iniciais de todos os processos
+Inicio dos eventos da simulacao
+O processo 0 testou o processo 1 no tempo  30.0 e ele estava correto
+O processo 0 testou o processo 2 no tempo  30.0 e ele estava correto
+O processo 0 testou o processo 4 no tempo  30.0 e ele estava correto
+O processo 0 testou o processo 8 no tempo  30.0 e ele estava correto
+O processo 0 testou o processo 16 no tempo  30.0 e ele estava correto
+State[0] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 1 testou o processo 0 no tempo  30.0 e ele estava correto
+O processo 1 testou o processo 3 no tempo  30.0 e ele estava correto
+O processo 1 testou o processo 5 no tempo  30.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo  30.0 e ele estava correto
+O processo 1 testou o processo 17 no tempo  30.0 e ele estava correto
+State[1] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 2 testou o processo 3 no tempo  30.0 e ele estava correto
+O processo 2 testou o processo 0 no tempo  30.0 e ele estava correto
+O processo 2 testou o processo 6 no tempo  30.0 e ele estava correto
+O processo 2 testou o processo 10 no tempo  30.0 e ele estava correto
+O processo 2 testou o processo 18 no tempo  30.0 e ele estava correto
+State[2] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 3 testou o processo 2 no tempo  30.0 e ele estava correto
+O processo 3 testou o processo 1 no tempo  30.0 e ele estava correto
+O processo 3 testou o processo 7 no tempo  30.0 e ele estava correto
+O processo 3 testou o processo 11 no tempo  30.0 e ele estava correto
+O processo 3 testou o processo 19 no tempo  30.0 e ele estava correto
+State[3] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 4 testou o processo 5 no tempo  30.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo  30.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo  30.0 e ele estava correto
+O processo 4 testou o processo 12 no tempo  30.0 e ele estava correto
+State[4] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo  30.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo  30.0 e ele estava correto
+O processo 5 testou o processo 1 no tempo  30.0 e ele estava correto
+O processo 5 testou o processo 13 no tempo  30.0 e ele estava correto
+State[5] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo  30.0 e ele estava correto
+O processo 6 testou o processo 4 no tempo  30.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo  30.0 e ele estava correto
+O processo 6 testou o processo 14 no tempo  30.0 e ele estava correto
+State[6] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 7 testou o processo 6 no tempo  30.0 e ele estava correto
+O processo 7 testou o processo 5 no tempo  30.0 e ele estava correto
+O processo 7 testou o processo 3 no tempo  30.0 e ele estava correto
+O processo 7 testou o processo 15 no tempo  30.0 e ele estava correto
+State[7] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 8 testou o processo 9 no tempo  30.0 e ele estava correto
+O processo 8 testou o processo 10 no tempo  30.0 e ele estava correto
+O processo 8 testou o processo 12 no tempo  30.0 e ele estava correto
+O processo 8 testou o processo 0 no tempo  30.0 e ele estava correto
+State[8] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 9 testou o processo 8 no tempo  30.0 e ele estava correto
+O processo 9 testou o processo 11 no tempo  30.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo  30.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo  30.0 e ele estava correto
+State[9] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo  30.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo  30.0 e ele estava correto
+O processo 10 testou o processo 14 no tempo  30.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo  30.0 e ele estava correto
+State[10] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo  30.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo  30.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo  30.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo  30.0 e ele estava correto
+State[11] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo  30.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo  30.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo  30.0 e ele estava correto
+O processo 12 testou o processo 4 no tempo  30.0 e ele estava correto
+State[12] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo  30.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo  30.0 e ele estava correto
+O processo 13 testou o processo 9 no tempo  30.0 e ele estava correto
+O processo 13 testou o processo 5 no tempo  30.0 e ele estava correto
+State[13] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 14 testou o processo 15 no tempo  30.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo  30.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo  30.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo  30.0 e ele estava correto
+State[14] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 15 testou o processo 14 no tempo  30.0 e ele estava correto
+O processo 15 testou o processo 13 no tempo  30.0 e ele estava correto
+O processo 15 testou o processo 11 no tempo  30.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo  30.0 e ele estava correto
+State[15] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo  30.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo  30.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo  30.0 e ele estava correto
+O processo 16 testou o processo 4 no tempo  30.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo  30.0 e ele estava correto
+O processo 16 testou o processo 12 no tempo  30.0 e ele estava correto
+State[16] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo  30.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo  30.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo  30.0 e ele estava correto
+O processo 17 testou o processo 5 no tempo  30.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo  30.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo  30.0 e ele estava correto
+State[17] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo  30.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo  30.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo  30.0 e ele estava correto
+O processo 18 testou o processo 6 no tempo  30.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo  30.0 e ele estava correto
+O processo 18 testou o processo 14 no tempo  30.0 e ele estava correto
+State[18] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo  30.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo  30.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo  30.0 e ele estava correto
+O processo 19 testou o processo 7 no tempo  30.0 e ele estava correto
+O processo 19 testou o processo 11 no tempo  30.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo  30.0 e ele estava correto
+State[19] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 0 testou o processo 1 no tempo  60.0 e ele estava correto
+O processo 0 testou o processo 2 no tempo  60.0 e ele estava correto
+O processo 0 testou o processo 4 no tempo  60.0 e ele estava correto
+O processo 0 testou o processo 8 no tempo  60.0 e ele estava correto
+O processo 0 testou o processo 16 no tempo  60.0 e ele estava correto
+State[0] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 1 testou o processo 0 no tempo  60.0 e ele estava correto
+O processo 1 testou o processo 3 no tempo  60.0 e ele estava correto
+O processo 1 testou o processo 5 no tempo  60.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo  60.0 e ele estava correto
+O processo 1 testou o processo 17 no tempo  60.0 e ele estava correto
+State[1] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 2 testou o processo 3 no tempo  60.0 e ele estava correto
+O processo 2 testou o processo 0 no tempo  60.0 e ele estava correto
+O processo 2 testou o processo 6 no tempo  60.0 e ele estava correto
+O processo 2 testou o processo 10 no tempo  60.0 e ele estava correto
+O processo 2 testou o processo 18 no tempo  60.0 e ele estava correto
+State[2] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 3 testou o processo 2 no tempo  60.0 e ele estava correto
+O processo 3 testou o processo 1 no tempo  60.0 e ele estava correto
+O processo 3 testou o processo 7 no tempo  60.0 e ele estava correto
+O processo 3 testou o processo 11 no tempo  60.0 e ele estava correto
+O processo 3 testou o processo 19 no tempo  60.0 e ele estava correto
+State[3] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 4 testou o processo 5 no tempo  60.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo  60.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo  60.0 e ele estava correto
+O processo 4 testou o processo 12 no tempo  60.0 e ele estava correto
+State[4] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo  60.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo  60.0 e ele estava correto
+O processo 5 testou o processo 1 no tempo  60.0 e ele estava correto
+O processo 5 testou o processo 13 no tempo  60.0 e ele estava correto
+State[5] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo  60.0 e possui uma falsa suspeita dele
+O processo 6 testou o processo 4 no tempo  60.0 e ele estava correto
+O processo 6 testou o processo 5 no tempo  60.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo  60.0 e ele estava correto
+O processo 6 testou o processo 3 no tempo  60.0 e ele estava correto
+O processo 6 testou o processo 14 no tempo  60.0 e ele estava correto
+O processo 6 testou o processo 15 no tempo  60.0 e ele estava correto
+State[6] : { 0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 7 testou o processo 6 no tempo  60.0 e ele estava correto
+O processo 7 descobriu no tempo  60.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 7 encerrou sua execucao no tempo  60.0
+O processo 8 testou o processo 9 no tempo  60.0 e ele estava correto
+O processo 8 testou o processo 10 no tempo  60.0 e ele estava correto
+O processo 8 testou o processo 12 no tempo  60.0 e ele estava correto
+O processo 8 testou o processo 0 no tempo  60.0 e ele estava correto
+State[8] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 9 testou o processo 8 no tempo  60.0 e ele estava correto
+O processo 9 testou o processo 11 no tempo  60.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo  60.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo  60.0 e ele estava correto
+State[9] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo  60.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo  60.0 e ele estava correto
+O processo 10 testou o processo 14 no tempo  60.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo  60.0 e ele estava correto
+State[10] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo  60.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo  60.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo  60.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo  60.0 e ele estava correto
+State[11] : { 0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo  60.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo  60.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo  60.0 e possui uma falsa suspeita dele
+O processo 12 testou o processo 4 no tempo  60.0 e ele estava correto
+State[12] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo  60.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo  60.0 e ele estava correto
+O processo 13 testou o processo 9 no tempo  60.0 e ele estava correto
+O processo 13 testou o processo 5 no tempo  60.0 e ele estava correto
+State[13] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 14 testou o processo 15 no tempo  60.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo  60.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo  60.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo  60.0 e ele estava correto
+State[14] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 15 testou o processo 14 no tempo  60.0 e ele estava correto
+O processo 15 testou o processo 13 no tempo  60.0 e ele estava correto
+O processo 15 testou o processo 11 no tempo  60.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo  60.0 e possui uma suspeita legitima dele
+State[15] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo  60.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo  60.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo  60.0 e ele estava correto
+O processo 16 testou o processo 4 no tempo  60.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo  60.0 e ele estava correto
+O processo 16 testou o processo 12 no tempo  60.0 e ele estava correto
+State[16] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo  60.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo  60.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo  60.0 e ele estava correto
+O processo 17 testou o processo 5 no tempo  60.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo  60.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo  60.0 e ele estava correto
+State[17] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo  60.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo  60.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo  60.0 e ele estava correto
+O processo 18 testou o processo 6 no tempo  60.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo  60.0 e ele estava correto
+O processo 18 testou o processo 14 no tempo  60.0 e ele estava correto
+State[18] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo  60.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo  60.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo  60.0 e ele estava correto
+O processo 19 testou o processo 7 no tempo  60.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 11 no tempo  60.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo  60.0 e ele estava correto
+State[19] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 0 testou o processo 1 no tempo  90.0 e ele estava correto
+O processo 0 testou o processo 2 no tempo  90.0 e ele estava correto
+O processo 0 testou o processo 4 no tempo  90.0 e ele estava correto
+O processo 0 testou o processo 8 no tempo  90.0 e ele estava correto
+O processo 0 testou o processo 16 no tempo  90.0 e ele estava correto
+State[0] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 1 testou o processo 0 no tempo  90.0 e ele estava correto
+O processo 1 testou o processo 3 no tempo  90.0 e ele estava correto
+O processo 1 testou o processo 5 no tempo  90.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo  90.0 e ele estava correto
+O processo 1 testou o processo 17 no tempo  90.0 e ele estava correto
+State[1] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 2 testou o processo 3 no tempo  90.0 e ele estava correto
+O processo 2 testou o processo 0 no tempo  90.0 e ele estava correto
+O processo 2 testou o processo 6 no tempo  90.0 e ele estava correto
+O processo 2 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 2 testou o processo 18 no tempo  90.0 e ele estava correto
+State[2] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 3 testou o processo 2 no tempo  90.0 e ele estava correto
+O processo 3 testou o processo 1 no tempo  90.0 e ele estava correto
+O processo 3 testou o processo 7 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 3 testou o processo 11 no tempo  90.0 e ele estava correto
+O processo 3 testou o processo 19 no tempo  90.0 e ele estava correto
+State[3] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 4 testou o processo 5 no tempo  90.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo  90.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo  90.0 e ele estava correto
+O processo 4 testou o processo 12 no tempo  90.0 e ele estava correto
+State[4] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo  90.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 5 testou o processo 1 no tempo  90.0 e ele estava correto
+O processo 5 testou o processo 13 no tempo  90.0 e ele estava correto
+State[5] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 4 no tempo  90.0 e ele estava correto
+O processo 6 testou o processo 5 no tempo  90.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo  90.0 e ele estava correto
+O processo 6 testou o processo 3 no tempo  90.0 e ele estava correto
+O processo 6 testou o processo 14 no tempo  90.0 e ele estava correto
+O processo 6 testou o processo 15 no tempo  90.0 e ele estava correto
+State[6] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 8 testou o processo 9 no tempo  90.0 e ele estava correto
+O processo 8 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 8 testou o processo 12 no tempo  90.0 e ele estava correto
+O processo 8 descobriu no tempo  90.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 8 encerrou sua execucao no tempo  90.0
+O processo 9 testou o processo 8 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 9 testou o processo 11 no tempo  90.0 e ele estava correto
+O processo 9 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo  90.0 e ele estava correto
+O processo 9 testou o processo 12 no tempo  90.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo  90.0 e ele estava correto
+O processo 9 testou o processo 0 no tempo  90.0 e ele estava correto
+State[9] : { 0  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo  90.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 10 testou o processo 14 no tempo  90.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo  90.0 e ele estava correto
+State[10] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo  90.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo  90.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo  90.0 e ele estava correto
+State[11] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo  90.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo  90.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 12 testou o processo 4 no tempo  90.0 e ele estava correto
+State[12] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo  90.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo  90.0 e ele estava correto
+O processo 13 testou o processo 9 no tempo  90.0 e ele estava correto
+O processo 13 testou o processo 5 no tempo  90.0 e ele estava correto
+State[13] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 14 testou o processo 15 no tempo  90.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo  90.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo  90.0 e ele estava correto
+State[14] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 15 testou o processo 14 no tempo  90.0 e ele estava correto
+O processo 15 testou o processo 13 no tempo  90.0 e ele estava correto
+O processo 15 testou o processo 11 no tempo  90.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo  90.0 e possui uma suspeita legitima dele
+State[15] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo  90.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo  90.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo  90.0 e ele estava correto
+O processo 16 testou o processo 4 no tempo  90.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 12 no tempo  90.0 e ele estava correto
+State[16] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo  90.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo  90.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo  90.0 e ele estava correto
+O processo 17 testou o processo 5 no tempo  90.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo  90.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo  90.0 e ele estava correto
+State[17] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo  90.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo  90.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo  90.0 e ele estava correto
+O processo 18 testou o processo 6 no tempo  90.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo  90.0 e ele estava correto
+O processo 18 testou o processo 14 no tempo  90.0 e ele estava correto
+State[18] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo  90.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo  90.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo  90.0 e possui uma falsa suspeita dele
+O processo 19 testou o processo 7 no tempo  90.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 11 no tempo  90.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo  90.0 e ele estava correto
+State[19] : { 0  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 0 testou o processo 1 no tempo 120.0 e ele estava correto
+O processo 0 testou o processo 2 no tempo 120.0 e ele estava correto
+O processo 0 testou o processo 4 no tempo 120.0 e ele estava correto
+O processo 0 testou o processo 8 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 0 testou o processo 16 no tempo 120.0 e ele estava correto
+State[0] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 1 testou o processo 0 no tempo 120.0 e ele estava correto
+O processo 1 testou o processo 3 no tempo 120.0 e ele estava correto
+O processo 1 testou o processo 5 no tempo 120.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo 120.0 e ele estava correto
+O processo 1 testou o processo 17 no tempo 120.0 e ele estava correto
+State[1] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 2 testou o processo 3 no tempo 120.0 e ele estava correto
+O processo 2 testou o processo 0 no tempo 120.0 e ele estava correto
+O processo 2 testou o processo 6 no tempo 120.0 e ele estava correto
+O processo 2 testou o processo 10 no tempo 120.0 e ele estava correto
+O processo 2 testou o processo 18 no tempo 120.0 e ele estava correto
+State[2] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 3 testou o processo 2 no tempo 120.0 e ele estava correto
+O processo 3 testou o processo 1 no tempo 120.0 e ele estava correto
+O processo 3 testou o processo 7 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 3 testou o processo 11 no tempo 120.0 e ele estava correto
+O processo 3 testou o processo 19 no tempo 120.0 e ele estava correto
+O processo 3 descobriu no tempo 120.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 3 encerrou sua execucao no tempo 120.0
+O processo 4 testou o processo 5 no tempo 120.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo 120.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo 120.0 e ele estava correto
+O processo 4 testou o processo 12 no tempo 120.0 e ele estava correto
+State[4] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo 120.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 5 testou o processo 1 no tempo 120.0 e ele estava correto
+O processo 5 testou o processo 13 no tempo 120.0 e ele estava correto
+State[5] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 4 no tempo 120.0 e ele estava correto
+O processo 6 testou o processo 5 no tempo 120.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo 120.0 e ele estava correto
+O processo 6 testou o processo 3 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 14 no tempo 120.0 e ele estava correto
+O processo 6 testou o processo 15 no tempo 120.0 e ele estava correto
+State[6] : { 0  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 9 testou o processo 8 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 9 testou o processo 11 no tempo 120.0 e ele estava correto
+O processo 9 testou o processo 10 no tempo 120.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo 120.0 e ele estava correto
+O processo 9 testou o processo 12 no tempo 120.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo 120.0 e ele estava correto
+O processo 9 testou o processo 0 no tempo 120.0 e ele estava correto
+State[9] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo 120.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 10 testou o processo 14 no tempo 120.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo 120.0 e possui uma falsa suspeita dele
+State[10] : { 0  0  1  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo 120.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo 120.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo 120.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo 120.0 e possui uma suspeita legitima dele
+State[11] : { 0  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo 120.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo 120.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 12 testou o processo 4 no tempo 120.0 e ele estava correto
+State[12] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo 120.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo 120.0 e ele estava correto
+O processo 13 testou o processo 9 no tempo 120.0 e ele estava correto
+O processo 13 testou o processo 5 no tempo 120.0 e ele estava correto
+State[13] : { 0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 14 testou o processo 15 no tempo 120.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo 120.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo 120.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo 120.0 e ele estava correto
+State[14] : { 0  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 15 testou o processo 14 no tempo 120.0 e ele estava correto
+O processo 15 testou o processo 13 no tempo 120.0 e ele estava correto
+O processo 15 testou o processo 11 no tempo 120.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo 120.0 e possui uma suspeita legitima dele
+State[15] : { 0  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo 120.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo 120.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo 120.0 e possui uma falsa suspeita dele
+O processo 16 testou o processo 4 no tempo 120.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 12 no tempo 120.0 e ele estava correto
+State[16] : { 1  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo 120.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo 120.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo 120.0 e ele estava correto
+O processo 17 testou o processo 5 no tempo 120.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo 120.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo 120.0 e ele estava correto
+State[17] : { 1  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo 120.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo 120.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo 120.0 e ele estava correto
+O processo 18 testou o processo 6 no tempo 120.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo 120.0 e possui uma falsa suspeita dele
+O processo 18 testou o processo 14 no tempo 120.0 e ele estava correto
+State[18] : { 1  0  1  1  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo 120.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo 120.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 7 no tempo 120.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 11 no tempo 120.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo 120.0 e ele estava correto
+State[19] : { 1  0  1  1  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 0 testou o processo 1 no tempo 150.0 e ele estava correto
+O processo 0 testou o processo 2 no tempo 150.0 e ele estava correto
+O processo 0 testou o processo 4 no tempo 150.0 e ele estava correto
+O processo 0 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 0 testou o processo 16 no tempo 150.0 e ele estava correto
+O processo 0 descobriu no tempo 150.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 0 encerrou sua execucao no tempo 150.0
+O processo 1 testou o processo 0 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 3 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 2 no tempo 150.0 e ele estava correto
+O processo 1 testou o processo 5 no tempo 150.0 e ele estava correto
+O processo 1 testou o processo 4 no tempo 150.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo 150.0 e ele estava correto
+O processo 1 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 17 no tempo 150.0 e ele estava correto
+O processo 1 testou o processo 16 no tempo 150.0 e ele estava correto
+State[1] : { 1  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 2 testou o processo 3 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 2 testou o processo 0 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 2 testou o processo 1 no tempo 150.0 e ele estava correto
+O processo 2 testou o processo 6 no tempo 150.0 e ele estava correto
+O processo 2 testou o processo 7 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 2 testou o processo 10 no tempo 150.0 e ele estava correto
+O processo 2 descobriu no tempo 150.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 2 encerrou sua execucao no tempo 150.0
+O processo 4 testou o processo 5 no tempo 150.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo 150.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 4 testou o processo 12 no tempo 150.0 e ele estava correto
+State[4] : { 1  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo 150.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 5 testou o processo 1 no tempo 150.0 e ele estava correto
+O processo 5 testou o processo 13 no tempo 150.0 e ele estava correto
+State[5] : { 1  0  0  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 4 no tempo 150.0 e ele estava correto
+O processo 6 testou o processo 5 no tempo 150.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 3 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 14 no tempo 150.0 e ele estava correto
+O processo 6 testou o processo 15 no tempo 150.0 e ele estava correto
+State[6] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 9 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 9 testou o processo 11 no tempo 150.0 e ele estava correto
+O processo 9 testou o processo 10 no tempo 150.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo 150.0 e ele estava correto
+O processo 9 testou o processo 12 no tempo 150.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo 150.0 e ele estava correto
+O processo 9 testou o processo 0 no tempo 150.0 e possui uma suspeita legitima dele
+State[9] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo 150.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 10 testou o processo 14 no tempo 150.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo 150.0 e possui uma suspeita legitima dele
+State[10] : { 0  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo 150.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo 150.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo 150.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo 150.0 e possui uma suspeita legitima dele
+State[11] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo 150.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo 150.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 12 testou o processo 4 no tempo 150.0 e ele estava correto
+State[12] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo 150.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo 150.0 e ele estava correto
+O processo 13 testou o processo 9 no tempo 150.0 e ele estava correto
+O processo 13 testou o processo 5 no tempo 150.0 e ele estava correto
+State[13] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 14 testou o processo 15 no tempo 150.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo 150.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo 150.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo 150.0 e ele estava correto
+State[14] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 15 testou o processo 14 no tempo 150.0 e ele estava correto
+O processo 15 testou o processo 13 no tempo 150.0 e possui uma falsa suspeita dele
+O processo 15 testou o processo 11 no tempo 150.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo 150.0 e possui uma suspeita legitima dele
+State[15] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  1  0  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo 150.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo 150.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 4 no tempo 150.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 12 no tempo 150.0 e ele estava correto
+State[16] : { 1  0  1  1  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo 150.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo 150.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo 150.0 e possui uma falsa suspeita dele
+O processo 17 testou o processo 5 no tempo 150.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo 150.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo 150.0 e ele estava correto
+State[17] : { 1  1  1  1  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo 150.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo 150.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 18 testou o processo 6 no tempo 150.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo 150.0 e ele estava correto
+O processo 18 testou o processo 14 no tempo 150.0 e ele estava correto
+State[18] : { 1  0  1  1  0  0  0  1  1  0  2  0  0  0  0  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo 150.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo 150.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 7 no tempo 150.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 11 no tempo 150.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo 150.0 e ele estava correto
+State[19] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  0  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 1 testou o processo 0 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 3 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 2 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 5 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 4 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 7 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 6 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 9 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 8 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 1 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 1 testou o processo 17 no tempo 180.0 e ele estava correto
+O processo 1 descobriu no tempo 180.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 1 encerrou sua execucao no tempo 180.0
+O processo 4 testou o processo 5 no tempo 180.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo 180.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 4 testou o processo 12 no tempo 180.0 e ele estava correto
+State[4] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 5 testou o processo 4 no tempo 180.0 e ele estava correto
+O processo 5 testou o processo 7 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 5 testou o processo 1 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 5 testou o processo 13 no tempo 180.0 e ele estava correto
+O processo 5 testou o processo 9 no tempo 180.0 e ele estava correto
+O processo 5 testou o processo 17 no tempo 180.0 e ele estava correto
+State[5] : { 1  1  1  1  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0  0 }
+O processo 6 testou o processo 7 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 4 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 5 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 2 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 3 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 6 testou o processo 14 no tempo 180.0 e possui uma falsa suspeita dele
+O processo 6 testou o processo 15 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 18 no tempo 180.0 e ele estava correto
+O processo 6 testou o processo 19 no tempo 180.0 e ele estava correto
+State[6] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  1  0  0  0  0  0 }
+O processo 9 testou o processo 8 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 9 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 9 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 9 testou o processo 13 no tempo 180.0 e ele estava correto
+O processo 9 testou o processo 12 no tempo 180.0 e ele estava correto
+O processo 9 testou o processo 1 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 9 testou o processo 0 no tempo 180.0 e possui uma suspeita legitima dele
+State[9] : { 1  1  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 10 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 10 testou o processo 8 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 10 testou o processo 14 no tempo 180.0 e ele estava correto
+O processo 10 testou o processo 2 no tempo 180.0 e possui uma suspeita legitima dele
+State[10] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 11 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 11 testou o processo 9 no tempo 180.0 e ele estava correto
+O processo 11 testou o processo 15 no tempo 180.0 e ele estava correto
+O processo 11 testou o processo 3 no tempo 180.0 e possui uma suspeita legitima dele
+State[11] : { 1  1  1  1  0  0  0  1  1  0  0  0  0  1  0  0  0  0  0  0 }
+O processo 12 testou o processo 13 no tempo 180.0 e ele estava correto
+O processo 12 testou o processo 14 no tempo 180.0 e ele estava correto
+O processo 12 testou o processo 8 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 12 testou o processo 4 no tempo 180.0 e ele estava correto
+State[12] : { 1  0  1  1  0  0  0  1  1  0  0  0  0  0  0  0  0  0  0  0 }
+O processo 13 testou o processo 12 no tempo 180.0 e ele estava correto
+O processo 13 testou o processo 15 no tempo 180.0 e ele estava correto
+O processo 13 descobriu no tempo 180.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 13 encerrou sua execucao no tempo 180.0
+O processo 14 testou o processo 15 no tempo 180.0 e ele estava correto
+O processo 14 testou o processo 12 no tempo 180.0 e ele estava correto
+O processo 14 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 14 testou o processo 6 no tempo 180.0 e ele estava correto
+O processo 14 descobriu no tempo 180.0 que foi vitima de falsa suspeita durante 0 rodadas
+O processo 14 encerrou sua execucao no tempo 180.0
+O processo 15 testou o processo 14 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 15 testou o processo 13 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 15 testou o processo 12 no tempo 180.0 e ele estava correto
+O processo 15 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 15 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 15 testou o processo 7 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 15 testou o processo 6 no tempo 180.0 e ele estava correto
+State[15] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  1  0  0  0  0  0 }
+O processo 16 testou o processo 17 no tempo 180.0 e ele estava correto
+O processo 16 testou o processo 18 no tempo 180.0 e ele estava correto
+O processo 16 testou o processo 0 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 4 no tempo 180.0 e ele estava correto
+O processo 16 testou o processo 8 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 16 testou o processo 12 no tempo 180.0 e ele estava correto
+State[16] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  0  0  0  0  0  0  0 }
+O processo 17 testou o processo 16 no tempo 180.0 e ele estava correto
+O processo 17 testou o processo 19 no tempo 180.0 e ele estava correto
+O processo 17 testou o processo 1 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 17 testou o processo 5 no tempo 180.0 e ele estava correto
+O processo 17 testou o processo 9 no tempo 180.0 e ele estava correto
+O processo 17 testou o processo 13 no tempo 180.0 e possui uma suspeita legitima dele
+State[17] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  0  0  0  0  0  0 }
+O processo 18 testou o processo 19 no tempo 180.0 e ele estava correto
+O processo 18 testou o processo 16 no tempo 180.0 e ele estava correto
+O processo 18 testou o processo 2 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 18 testou o processo 6 no tempo 180.0 e ele estava correto
+O processo 18 testou o processo 10 no tempo 180.0 e ele estava correto
+O processo 18 testou o processo 14 no tempo 180.0 e possui uma suspeita legitima dele
+State[18] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  1  0  0  0  0  0 }
+O processo 19 testou o processo 18 no tempo 180.0 e ele estava correto
+O processo 19 testou o processo 17 no tempo 180.0 e ele estava correto
+O processo 19 testou o processo 3 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 7 no tempo 180.0 e possui uma suspeita legitima dele
+O processo 19 testou o processo 11 no tempo 180.0 e ele estava correto
+O processo 19 testou o processo 15 no tempo 180.0 e ele estava correto
+State[19] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  1  0  0  0  0  0 }
+Terminou uma rodada de testes!!
+O processo 4 testou o processo 5 no tempo 210.0 e ele estava correto
+O processo 4 testou o processo 6 no tempo 210.0 e ele estava correto
+O processo 4 testou o processo 0 no tempo 210.0 e possui uma suspeita legitima dele
+O processo 4 testou o processo 12 no tempo 210.0 e ele estava correto
+O processo 4 testou o processo 8 no tempo 210.0 e possui uma suspeita legitima dele
+O processo 4 testou o processo 16 no tempo 210.0 e ele estava correto
+State[4] : { 1  1  1  1  0  0  0  1  1  0  2  0  0  1  1  0  0  0  0  0 }
